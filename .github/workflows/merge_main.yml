@@ -20,5 +20,5 @@ jobs:
                 reviewers: steven9909, JBennyHuang
                 body: "**ATUOMATED PULL REQUEST. DO NOT SQUASH MERGE OR MERGE COMMIT!!!**"
                 branch: releases
-                delete-branch: true
+                delete-branch: false
                 draft: false
