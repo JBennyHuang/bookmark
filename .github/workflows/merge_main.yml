@@ -17,5 +17,5 @@ jobs:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
                 title: MERGE main TO releases
                 assignee: ${{ github.actor }}
-                body: "**ATUOMATED PULL REQUEST. DO NOT SQUASH MERGE!!!**"
+                body: "**ATUOMATED PULL REQUEST. DO NOT REBASE AND MERGE!!!**"
                 target_branch: releases 
