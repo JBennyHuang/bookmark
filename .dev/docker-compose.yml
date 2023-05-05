@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ../frontend
+    command: sleep infinity
+    depends_on:
+      - backend
+
+  backend:
+    build: ../backend
+    command: sleep infinity
+    depends_on:
+      - database
+
+  database:
+    image: elasticsearch:8.7.1
+
+volumes:
+  database:
