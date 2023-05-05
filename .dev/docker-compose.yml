@@ -6,12 +6,16 @@ services:
     command: sleep infinity
     depends_on:
       - backend
+    volumes:
+      - ../frontend:/work/
 
   backend:
     build: ../backend
     command: sleep infinity
     depends_on:
       - database
+    volumes:
+      - ../backend:/work/
 
   database:
     image: elasticsearch:8.7.1
