@@ -11,12 +11,17 @@ jobs:
               with:
                 ref: main
                 fetch-depth: 0
-            - name: Create PR
-              uses: devops-infra/action-pull-request@v0.5.5
+            - name: Create Pull Request
+              uses: peter-evans/create-pull-request@v5.0.1
+
+            - name: Create Pull Request
+              uses: peter-evans/create-pull-request@v5.0.1
               with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
-                title: MERGE main to releases
-                assignee: ${{ github.actor }}
-                reviewer: steven9909, JBennyHuang
-                body: "**ATUOMATED PULL REQUEST. DO NOT SQUASH MERGE!!!**"
-                target_branch: releases 
+                token: ${{ secrets.GITHUB_TOKEN }}
+                title: MERGE main TO releases
+                assignees: ${{ github.actor }}
+                reviewers: steven9909, JBennyHuang
+                body: "**ATUOMATED PULL REQUEST. DO NOT SQUASH MERGE OR MERGE COMMIT!!!**"
+                branch: releases
+                delete-branch: true
+                draft: false
