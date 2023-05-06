@@ -12,10 +12,10 @@ services:
   backend:
     build: ../backend
     command: sleep infinity
+    ports:
+      - "8080:8080"
     depends_on:
       - database
-    volumes:
-      - ../backend:/work/
 
   database:
     image: elasticsearch:8.7.1
