@@ -1,0 +1,23 @@
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 4 * * *'
+jobs:
+  merge-main:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v3
+      with:
+        ref: main
+        fetch-depth: 0
+    - name: Create PR
+      uses: repo-sync/pull-request@v2
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        pr_title: "MERGE main TO releases"
+        pr_assignee: ${{ github.actor }}
+        pr_reviewer: "steven9909,JBennyHuang"
+        pr_body: "**ATUOMATED PULL REQUEST. DO NOT REBASE AND MERGE OR SQUASH MERGE!!!**"
+        pr_allow_empty: false
+        destination_branch: "releases" 
