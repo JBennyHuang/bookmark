@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   frontend:
-    image: rust:latest
+    image: node:latest
     command: sleep infinity
     depends_on:
       - backend
@@ -12,7 +12,7 @@ services:
       - ../frontend:/work/
 
   backend:
-    image: node:latest
+    image: rust:latest
     command: sleep infinity
     depends_on:
       - elasticsearch
