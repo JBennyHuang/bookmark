@@ -8,17 +8,17 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-          with:
-            ref: ${{ github.head_ref }}
-            fetch: 0
+        with:
+          ref: ${{ github.head_ref }}
+          fetch: 0
       - name: Install latest stable rustfmt
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
           override: true
           components: rustfmt
-      - name: Run cargo check
+      - name: Run cargo fmt
         uses: actions-rs/cargo@v1
         with:
-          command: check
-          args: --manifest-path backend/server/Cargo.toml
+          command: fmt
+          args: --manifest-path backend/server/Cargo.toml --all -- --check
