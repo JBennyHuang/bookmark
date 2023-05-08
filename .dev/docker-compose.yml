@@ -2,23 +2,31 @@ version: '3.8'
 
 services:
   frontend:
-    build: ../frontend
+    image: node:latest
     command: sleep infinity
     depends_on:
       - backend
+    ports:
+      - "3000:3000"
     volumes:
       - ../frontend:/work/
 
   backend:
-    build: ../backend
+    image: rust:latest
     command: sleep infinity
+    depends_on:
+      - elasticsearch
     ports:
       - "8080:8080"
-    depends_on:
-      - database
+    volumes:
+      - ../backend:/work/
 
-  database:
+  elasticsearch:
     image: elasticsearch:8.7.1
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch:/usr/share/elasticsearch/data
 
 volumes:
-  database:
+  elasticsearch:
